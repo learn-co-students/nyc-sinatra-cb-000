@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Figures</title>
+  </head>
+  <body>
+    <h1>List of Figures</h1>
+
+    <% Figure.all.each do |figure| %>
+      <p><a href="/figures/<%= figure.id %>">"<%= figure.name %>"</a></p>
+    <% end %>
+  </body>
+</html>
