@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Landmarks</title>
+  </head>
+  <style>
+  table, th, td {
+    border: 1px solid black;
+  }
+  </style>
+  <body>
+    <h1>List of Landmarks</h1>
+
+    <table align="center">
+      <tr>
+        <th>Name</th>
+        <th>Year Completed</th>
+      </tr>
+      <% Landmark.all.each do |landmark| %>
+        <tr>
+          <td><a href="/landmarks/<%= landmark.id %>"><%= landmark.name %></a></td>
+          <td><%= landmark.year_completed %></td>
+        </tr>
+      <% end %>
+    <table>
+  </body>
+</html>

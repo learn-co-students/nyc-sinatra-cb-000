@@ -1,10 +1,28 @@
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Year Completed</th>
-  </tr>
-  <tr>
-    <td><%= @landmark.name %></td>
-    <td><%= @landmark.year_completed %></td>
-  </tr>
-<table>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @landmark.name %></title>
+  </head>
+  <style>
+  table, th, td {
+    border: 1px solid black;
+  }
+  </style>
+  <body>
+    <h1><%= @landmark.name %></h1>
+    <a href="<%= @landmark.id %>/edit">Edit this Landmark</a>
+
+    <br></br>
+
+    <table align="center">
+      <tr>
+        <th>Figure</th>
+        <th>Year Completed</th>
+      </tr>
+      <tr>
+        <td><a href="/figures/<%= @landmark.figure.id %>"><%= @landmark.figure.name %></a></td>
+        <td><%= @landmark.year_completed %></td>
+      </tr>
+    <table>
+  </body>
+</html>

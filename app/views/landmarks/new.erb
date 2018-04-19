@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Create Landmark</title>
+  </head>
+  <body>
+    <h1 style="text-decoration: underline;">Create a landmark</h1>
+
+    <form method=post action="/landmarks">
+      <p><label style="font-weight: bold;">Name:</label>
+      <input type="text" name="landmark[name]" id="landmark_name"></p>
+
+      <p><label style="font-weight: bold;">Year Completed:</label>
+      <input type="text" name="landmark[year_completed]" id="landmark_year_completed" placeholder="e.g. 1776"></p>
+
+      <% Figure.all.each do |figure| %>
+        <label for="<%=figure.name%>"><%=figure.name%></label>
+        <input type="radio" name="figure[name][]" id="figure_<%=figure.id%>" value="<%= figure.name %>"><br>
+      <% end %>
+
+      <input type="submit" id="submit" value="Create New Landmark">
+    </form>
+  </body>
+</html>
