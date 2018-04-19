@@ -1,9 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Add Figure</title>
+    <title>Create Figure</title>
   </head>
   <body>
+    <h1 style="text-decoration: underline;">Create a figure</h1>
 
+    <form method=post action="/figures">
+      <p><label style="font-weight: bold;">Name:</label>
+      <input type="test" name="figure[name]" id="figure_name"></p>
+
+      <p><label style="font-weight: bold;">Titles:</label></p>
+      <% Title.all.each do |title| %>
+        <label for="<%=title.name%>"><%=title.name%></label>
+        <input type="checkbox" name="figure[title_ids][]" id="<%=title.name%>" value="<%=title.id%>"><br>
+      <% end %>
+
+      <label for="new_title">Other: </label>
+      <input type="text" name="title[name]" id="new_title">
+
+      <p><label style="font-weight: bold;">Landmarks:</label></p>
+      <% Landmark.all.each do |landmark| %>
+        <label for="<%=landmark.name%>"><%=landmark.name%></label>
+        <input type="checkbox" name="figure[landmark_ids][]" id="<%=landmark.name%>" value="<%=landmark.id%>"><br>
+      <% end %>
+
+      <label for="new_landmark">Other: </label>
+      <input type="text" name="landmark[name]" id="new_landmark">
+
+      <br></br>
+
+      <input type="submit" id="submit" value="Create New Figure">
+    </form>
   </body>
 </html>
