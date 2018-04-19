@@ -3,7 +3,7 @@ Landmark.all.delete_all
 Title.all.delete_all
 
 landmarks_list = {
-    "Madison Square Guarden" => {
+    "Madison Square Garden" => {
       :year_completed => 1901
     },
     "The big bull outside" => {

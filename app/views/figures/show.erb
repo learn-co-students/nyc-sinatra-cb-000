@@ -5,6 +5,7 @@
   </head>
   <body>
     <h1><%= @figure.name %></h1>
+    <a href="<%= @figure.id %>/edit">Edit this Figure</a>
 
     <h3>Titles:</h3>
     <% @figure.titles.each do |title| %>
