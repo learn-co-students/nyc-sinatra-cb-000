@@ -1,0 +1,12 @@
+<table border="1" cellpadding="10" cellspacing="10">
+  <tr>
+    <th>Figure Name</th>
+    <th>Titles</th>
+    <th>Landmarks</th>
+  </tr>
+  <tr>
+    <td><%= @figure.name %></td>
+    <td><%= erb :'figures/_checkboxes', :locals => {:class_name => 'Title'}%></td>
+    <td><%= erb :'figures/_checkboxes', :locals => {:class_name => 'Landmark'}%></td>
+  </tr>
+<table>

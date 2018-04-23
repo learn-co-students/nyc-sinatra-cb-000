@@ -1,0 +1,38 @@
+<% if @figure %>
+  <ul>
+    <% (Module.const_get(class_name)).all.each do |item| %><li><input 
+    id="<%= item.name %>" 
+    type="checkbox"
+      <% if class_name == 'Landmark' %>
+        id="landmark_<%= item.id %>"
+        name="landmarks[]"
+        value="landmark_<%= item.id %>"
+      <% else %>
+        id="title_<%= item.id %>"
+        name="figure[title_ids]"
+        value="title_<%= item.id %>"
+      <% end %>
+    <% if class_name == 'Landmark' %>
+      <% if @figure.landmarks.include? item %> checked <% end %>
+    <% else %>
+      <% if @figure.titles.include? item %> checked <% end %>
+    <% end %>
+        ><%= item.name %></input></li>
+  <% end %></br>
+  </ul>
+
+<% else %>
+  <ul>
+    <% (Module.const_get(class_name)).all.each do |item| %><li><input 
+    type="checkbox"
+      <% if class_name == 'Landmark' %>
+        name="figure[landmark_ids][]"
+        id="landmark_<%= item.id %>"
+      <% else %>
+        name="figure[title_ids][]"
+        id="title_<%= item.id %>"
+      <% end %>
+    value="<%= item.id %>"
+    ><%= item.name %></input></li>
+<% end %></br></ul>
+<% end %>

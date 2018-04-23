@@ -1,0 +1,26 @@
+
+<form action="/figures/<%= @figure.id %>" method='post'>
+
+  <input type="hidden" name="_method" value="patch">
+
+
+  <strong>Figure Name </strong><input type='text' id='figure_name' name='figure[name]' value="<%= @figure.name %>"/><br/>
+  </br>
+
+
+<table cellpadding="10" cellspacing="10">
+  <tr>
+    <th>Available Titles</th>
+    <th>Available Landmarks</th>
+  </tr>
+  <tr>
+    <td><%= erb :'figures/_checkboxes', :locals => {:class_name => 'Title'}%></td>
+    <td><%= erb :'figures/_checkboxes', :locals => {:class_name => 'Landmark'}%></td>
+  </td>
+</table>
+    New Landmark <input type="text" id="new_landmark" name="landmark[name]"/><br/>
+    New Landmark Year Completed <input type="text" name="landmark[year_completed]"/><br/>
+    New Title <input type="text" id="new_title" name="title[name]"/><br/>
+
+  <input type='submit' value='Edit Figure'/>
+</form>
