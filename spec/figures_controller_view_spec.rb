@@ -16,7 +16,7 @@ describe FiguresController do
     Landmark.destroy_all
   end
 
-  xit "allows you to view form to create a new figure" do
+  it "allows you to view form to create a new figure" do
     visit '/figures/new'
     expect(page.body).to include('<form')
     expect(page.body).to include('figure[name]')
@@ -52,7 +52,7 @@ describe FiguresController do
   end
 
 
-  xit "allows you to create a new figure with a title" do
+  it "allows you to create a new figure with a title" do
     visit '/figures/new'
     fill_in :figure_name, :with => "Doctor Who"
     check "title_#{Title.first.id}"
