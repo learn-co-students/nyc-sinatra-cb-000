@@ -26,6 +26,32 @@ describe FiguresController do
     expect(page.body).to include('title[name]')
   end
 
+  it "starts a form" do
+    visit '/figures/new'
+    expect(page.body).to include('<form')
+  end
+
+  it "includes 'figure[name]'" do
+    visit '/figures/new'
+    expect(page.body).to include('figure[name]')
+  end
+
+  it "include 'figure[title_ids]' for new" do
+    visit '/figures/new'
+    expect(page.body).to include('figure[title_ids][]')
+  end
+
+  it "includes 'figure[landmark_ids]'" do
+    visit '/figures/new'
+    expect(page.body).to include('landmark[name]')
+  end
+
+  it "includes 'landmark[name]'" do
+    visit '/figures/new'
+    expect(page.body).to include('landmark[name]')
+  end
+
+
   it "allows you to create a new figure with a title" do
     visit '/figures/new'
     fill_in :figure_name, :with => "Doctor Who"
@@ -34,6 +60,35 @@ describe FiguresController do
     figure = Figure.last
     expect(Figure.all.count).to eq(3)
     expect(figure.name).to eq("Doctor Who")
+    expect(figure.titles).to include(Title.first)
+  end
+
+
+
+  it "allows you to create a new figure with a title: count check" do
+    visit '/figures/new'
+    fill_in :figure_name, :with => "Doctor Who"
+    check "title_#{Title.first.id}"
+    click_button "Create New Figure"
+    figure = Figure.last
+    expect(Figure.all.count).to eq(3)
+  end
+
+  it "allows you to create a new figure with a title: name check" do
+    visit '/figures/new'
+    fill_in :figure_name, :with => "Doctor Who"
+    check "title_#{Title.first.id}"
+    click_button "Create New Figure"
+    figure = Figure.last
+    expect(figure.name).to eq("Doctor Who")
+  end
+
+  it "allows you to create a new figure with a title: title check" do
+    visit '/figures/new'
+    fill_in :figure_name, :with => "Doctor Who"
+    check "title_#{Title.first.id}"
+    click_button "Create New Figure"
+    figure = Figure.last
     expect(figure.titles).to include(Title.first)
   end
 
