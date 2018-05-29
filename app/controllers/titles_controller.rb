@@ -9,12 +9,12 @@ class TitlesController < ApplicationController
     erb :'titles/new'
   end
 
-  get '/titles/:id'
+  get '/titles/:id' do
     @title = Title.find(params[:id])
     erb :'titles/show'
   end
 
-  get '/titles/:id/edit'
+  get '/titles/:id/edit' do
     @title = Title.find(params[:id])
     erb :'titles/edit'
   end
