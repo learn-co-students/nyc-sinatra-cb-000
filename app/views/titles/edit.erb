@@ -1,0 +1,16 @@
+<h1>Update an Existing Title</h1>
+
+<form action="/titles/<%=@title.id%>" method="post">
+  <h3>Name:</h3>
+  <p><input type="text" name="title[name]" value="<%=@title.name%>"></p>
+
+  <h3>Figures:</h3>
+  <% Figure.all.each do |figure| %>
+    <p><input type="checkbox" name="title[figure_ids][]" value="<%=figure.id%>" <%='checked' if @title.figures.include?(figure)%>><%=  figure.name %></p>
+  <% end %>
+
+  <h3>Create New Figure:</h3>
+  <p>Name: <input type="text" name="figure[name]"></p>
+
+  <p><input type="submit" value="Edit Title"></p>
+</form>
