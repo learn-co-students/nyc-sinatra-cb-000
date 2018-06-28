@@ -1,0 +1,18 @@
+<!-- landmarks/new -->
+
+<h1>New NYC Historical Landmark</h1>
+
+<form action="/landmarks" method="POST">
+  <p>Landmark Name: <input type="text" name="landmark[name]" id="landmark_name"></p>
+
+  <p>Year Completed: <input type="text" name="landmark[year_completed]" id="landmark_year_completed"></p>
+
+  <input type="submit" id="create" value="Create New Landmark">
+</form>
+
+<br></br>
+
+<!-- Return to Index -->
+<form action="/landmarks" method="GET">
+  <input type="submit" value="Go Back to Landmark Index">
+</form>

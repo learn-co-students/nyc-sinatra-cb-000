@@ -1,10 +1,24 @@
+<!-- landmarks/show -->
+
+<h1>NYC Historical Landmark: <%= @landmark.name %></h1>
+
 <table>
   <tr>
     <th>Name</th>
     <th>Year Completed</th>
+    <th>Figure</th>
   </tr>
   <tr>
     <td><%= @landmark.name %></td>
     <td><%= @landmark.year_completed %></td>
+
+    <% if @landmark.figure_id %>
+      <td><%= @landmark.figure.name %></td>
+    <% else %>
+      <td> - </td>
+    <% end %>
   </tr>
 <table>
+
+  <!-- Link to Edit -->
+  <p><a href="/landmarks/<%= @landmark.id %>/edit">Edit Landmark</a> or Return to <a href="/landmarks">Landmark Index</a></p>

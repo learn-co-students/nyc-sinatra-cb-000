@@ -1,0 +1,26 @@
+<!-- landmarks/edit -->
+
+<h1>Edit NYC Historical Landmark: <%= @landmark.name %></h1>
+
+<% if @landmark.figure_id %>
+  <p>Figure Name: <a href="/figures/<%= @landmark.figure_id %>"><%= @landmark.figure.name %></a></p>
+<% else %>
+  <p>Figure Name:</p>
+<% end %>
+
+<form action="/landmarks/<%= @landmark.id %>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+
+  <p>Landmark Name: <input type="text" name="landmark[name]" id="name" value="<%= @landmark.name %>"></p>
+
+  <p>Year Completed: <input type="text" name="landmark[year_completed]" id="year_completed" value="<%= @landmark.year_completed %>"></p>
+
+  <input type="submit" id="save" value="Edit Landmark">
+</form>
+
+<br></br>
+
+<!-- Return to Index -->
+<form action="/landmarks" method="GET">
+  <input type="submit" value="Go Back to Landmark Index">
+</form>
