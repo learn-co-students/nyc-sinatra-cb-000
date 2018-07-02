@@ -27,7 +27,7 @@ class LandmarksController < ApplicationController
       landmark = Landmark.create(params[:landmark])
     end
 
-    redirect "/landmarks/#{landmark.id}"
+    redirect :"/landmarks/#{landmark.id}"
   end
 
   # Read: Edit a landmark
@@ -47,7 +47,7 @@ class LandmarksController < ApplicationController
     #landmark.year_completed = params[:landmark][:year_completed]
     #landmark.save
 
-    redirect "/landmarks/#{landmark.id}"
+    redirect :"/landmarks/#{landmark.id}"
   end
 
 end
