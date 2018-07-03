@@ -1,0 +1,24 @@
+<h1>Update an Existing Landmark</h1>
+
+<form action="/landmarks/<%=@landmark.id%>" method="post">
+
+  <!--  use Rack::MethodOverride -->
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <!--  use Rack::MethodOverride -->
+
+  <h3>Name:</h3>
+  <p><input id="name" type="text" name="landmark[name]" value="<%=@landmark.name%>"></p>
+
+  <h3>Year:</h3>
+  <p><input id="year_completed" type="text" name="landmark[year_completed]" value="<%=@landmark.year_completed%>"></p>
+
+  <h3>Figures:</h3>
+  <% Figure.all.each do |figure| %>
+    <p><input type="radio" name="landmark[figure_id]" value="<%=figure.id%>" <%= 'checked' if @landmark.figure == figure %>><%=  figure.name %></p>
+  <% end %>
+
+  <h3>Create New Figure:</h3>
+  <p>Name: <input type="text" name="figure[name]"></p>
+
+  <p><input type="submit" value="Edit Landmark"></p>
+</form>

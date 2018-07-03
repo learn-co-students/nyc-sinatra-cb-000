@@ -1,0 +1,38 @@
+<h1>Update an Existing Figure</h1>
+
+<form action="/figures/<%=@figure.id%>" method="post">
+
+  <!-- use Rack::MethodOverride -->
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <!-- use Rack::MethodOverride -->
+
+  <h3>Name:</h3>
+  <p><input id="figure_name" type="text" name="figure[name]" value="<%=@figure.name%>" required></p>
+
+  <br>
+
+  <h3>Titles:</h3>
+  <% Title.all.each do |title| %>
+    <p><input type="checkbox" name="figure[title_ids][]" value="<%=title.id%>" <%= 'checked' if @figure.titles.include?(title) %>><%=  title.name %></p>
+  <% end %>
+  <br>
+
+  <h3>Create New Title:</h3>
+  <p><input type="text" name="title[name]"></p>
+
+  <br>
+
+  <h3>Landmarks:</h3>
+  <% Landmark.all.each do |landmark| %>
+    <p><input type="checkbox" name="figure[landmark_ids][]" value="<%=landmark.id%>" <%= 'checked' if @figure.landmarks.include?(landmark) %>><%= landmark.name %></p>
+  <% end %>
+  <br>
+
+  <h3>Create New Landmark</h3>
+  <p>Name: <input id="new_landmark" type="text" name="landmark[name]"></p>
+  <p>Year: <input type="text" name="landmark[year_completed]"></p>
+
+  <br>
+
+  <p><input type="submit" value="Edit Figure"></p>
+</form>

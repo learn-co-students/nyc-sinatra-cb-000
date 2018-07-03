@@ -1,0 +1,15 @@
+<h1>Landmarks</h1>
+
+<% @landmarks.each do |landmark| %>
+  <h3><%= landmark.name %></h3>
+
+  <p><strong>Year: </strong><%= landmark.year_completed %></p>
+
+  <% if landmark.figure %>
+    <p><strong>Figure: </strong><%= landmark.figure.name %></p>
+  <% else %>
+    <p><strong>No Figure</strong></p>
+  <% end %>
+
+  <br>
+<% end %>
