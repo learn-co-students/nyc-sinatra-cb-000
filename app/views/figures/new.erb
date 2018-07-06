@@ -1,4 +1,10 @@
-<!--Your form for a new figure should dynamically generate checkboxes out of the available landmarks and titles. It should also have fields for creating a new landmark and/or a new title.-->
+<!--
+
+"the form for a new figure and the form to edit a figure should allow the user to select from existing landmarks and title and create new landmarks and titles to associate to the figure."
+
+Your form for a new figure should dynamically generate checkboxes out of the available landmarks and titles. It should also have fields for creating a new landmark and/or a new title.
+
+-->
 
 <h1>Create a New Figure</h1>
 
@@ -11,20 +17,42 @@
 	<br>
 
 	<h2>Titles</h2>
-	<!--
-	dynamically generate titles here per figure for user to 
-	select OR
-	create new title
-	-->
+
+
+	<% @titles.each do |title| %>
+		<input type="checkbox" name="figure[title_ids][]" id="<%= title.id %>" value="<%= title.id %>"> <%= title.name %>
+		</input>
+
+		<br>
+	<% end %>
 
 	<br>
 	<br>
 
-	
+	<label>Create New Title:</label> <input type="textbox" name="title[name]" id="new_title">
+
+	<br>
+	<br>
+
+	<h2>Landmarks</h2>
+
+	<% @landmarks.each do |landmark| %>
+		<input type="checkbox" name="figure[landmark_ids][]" id="<%= landmark.id %>" value="<%= landmark.id %>"> <%= landmark.name %>
+		</input>
+
+		<br>
+	<% end %>
+
+	<br>
+	<br>
+
+	<label>Create New Landmark:</label> <input type="textbox" name="landmark[name]" id="new_landmark">
 
 
 
-	<label>Create New Title:</label> <input type="textbox" name="title[name]" id="title_name">
+	<br>
+	<br>
+	<input type="submit" id="new_figure" value="Create New Figure">
 
 
 
