@@ -20,7 +20,7 @@ Your form for a new figure should dynamically generate checkboxes out of the ava
 
 
 	<% @titles.each do |title| %>
-		<input type="checkbox" name="figure[title_ids][]" id="<%= title.id %>" value="<%= title.id %>"> <%= title.name %>
+		<input type="checkbox" name="figure[title_ids][]" id="title_<%= title.id %>" value="<%= title.id %>"> <%= title.name %>
 		</input>
 
 		<br>
