@@ -37,7 +37,7 @@ Your form for a new figure should dynamically generate checkboxes out of the ava
 	<h2>Landmarks</h2>
 
 	<% @landmarks.each do |landmark| %>
-		<input type="checkbox" name="figure[landmark_ids][]" id="<%= landmark.id %>" value="<%= landmark.id %>"> <%= landmark.name %>
+		<input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= landmark.id %>" value="<%= landmark.id %>"> <%= landmark.name %>
 		</input>
 
 		<br>
