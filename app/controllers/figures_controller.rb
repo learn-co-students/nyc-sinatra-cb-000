@@ -11,23 +11,24 @@ class FiguresController < ApplicationController
 
 		@figure = Figure.create(params[:figure])
 
-		# if the Title textbox is not empty, 
-		# create a new title and add it to figure.landmark << Title.create(params[])
+		# create a new figure w/ a new title 
+		# check if it's empty
+		# check if it's already in the list 
+		if !params[:title][:name].empty?
+			@figure.titles << Title.create(params[:title])
+		else
+		end
 		
-		# if the Landmark textbox is not empty, 
-		# create a new landmark and add it to the figure's landmark array
-		# otherwise, just add the landmark.
-		# 
-		# REVIEW> THIS DOESN"T SEEM RIGHT.
-		
+		# create a new figure w/ a new landmark
+		# check if it's empty
+		# check if it's already in the list 
 		if !params[:landmark][:name].empty?
 			@figure.landmarks << Landmark.create(params[:landmark])
 		else
-			@figure.landmarks << Landmark.find_by(params[:landmark][:name])
 		end
 
 		@figure.save
 
-		# redirect :"/figures/#{figure.id}"
+		# redirect :"/figures/#{@figure.id}"
 	end
 end
