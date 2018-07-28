@@ -35,7 +35,7 @@ class FiguresController < ApplicationController
 		# create a new figure w/ a new landmark
 		# check if it's empty
 		# check if it's already in the list 
-		if !params[:landmark][:name].empty?
+		if !!params[:landmark][:name].empty?
 			@figure.landmarks << Landmark.create(params[:landmark])
 		else
 		end
