@@ -31,20 +31,19 @@ class LandmarksController < ApplicationController
 
 	get "/landmarks/:id/edit" do
 		@landmark = Landmark.find(params[:id])
+		@figure = Figure.all
+		
 		erb :"/landmarks/edit"
 	end
 
 	patch "/landmarks/:id" do
-		landmark = Landmark.find_by_id(params[:id])
+		@landmark = Landmark.find_by_id(params[:id])
 
-		if #some condition
-			# something like:
-			# @article = Article.find_by_id(params[:id])
-  			# @article.title = params[:title]
-  			# @article.content = params[:content]
-  			# @article.save
-		end
+		#if !landmark.blank?
+			@landmark.update(params[:landmark])
+			@landmark.save
+		#end
 
-		redirect "/landmarks/#{landmark.id}"
+		redirect "/landmarks/#{@landmark.id}"
 	end
 end
