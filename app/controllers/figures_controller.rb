@@ -23,31 +23,16 @@ class FiguresController < ApplicationController
 	post "/figures" do
 
 		@figure = Figure.create(params[:figure])
-
-		# create a new figure w/ a new title 
-		# check if it's empty
-		# check if it's already in the list 
-		if !params[:title][:name].empty?
-			@figure.titles << Title.create(params[:title])
-		else
-		end
-		
-		# create a new figure w/ a new landmark
-		# check if it's empty
-		# check if it's already in the list 
-		if !!params[:landmark][:name].empty?
-			@figure.landmarks << Landmark.create(params[:landmark])
-		else
-		end
-
+		@figure.landmarks << Landmark.find_or_create_by(params[:landmark]) if !params[:landmark][:name].empty?
+		@figure.titles << Title.find_or_create_by(params[:title]) if !params[:title][:name].empty?
 		@figure.save
 
-		# redirect :"/figures/#{@figure.id}"
+		redirect :"/figures/#{@figure.id}"
 	end
 
 	get "/figures/:id/edit" do
 		@figure = Figure.find(params[:id])
-		@titles = Title.all
+		@titles = Title.all 
 		@landmarks = Landmark.all
 
 		erb :"/figures/edit"
@@ -55,7 +40,11 @@ class FiguresController < ApplicationController
 
 	patch "figures/:id" do
 		@figure = Figure.find(params[:id])
+		@figure.update(params[:figure])
+		@figure.titles << Title.find_or_create_by(params[:title]) if !params[:title][:name].empty?
+    	@figure.landmarks << Landmark.find_or_create_by(params[:landmark]) if !params[:landmark][:name].empty?
+		@figure.save
 
-		redirect "/figures/#{@figure.id}"
+		redirect to "/figures/#{@figure.id}"
 	end 
 end

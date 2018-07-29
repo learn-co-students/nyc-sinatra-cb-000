@@ -7,8 +7,8 @@ class LandmarksController < ApplicationController
 
 
 	get "/landmarks/new" do
-		@landmarks = Landmark.all 
-		
+		@figures = Figure.all
+
 		erb :"/landmarks/new"
 	end
 
@@ -19,20 +19,18 @@ class LandmarksController < ApplicationController
 	end
 
 	post "/landmarks" do
-		@landmark = Landmark.all
+		@landmark = Landmark.create(params[:landmark])
+		@landmark.figure = Figure.find_or_create_by(params[:figure]) if !params[:figure][:name].empty?
+		@landmark.save
 
-		if !@landmark.exists?(name: params[:landmark][:name])	
-			@landmark = Landmark.create(params[:landmark])
-		end
-
-		redirect :"/landmarks"
+		redirect :"/landmarks/#{@landmark.id}"
 
 	end
 
 	get "/landmarks/:id/edit" do
 		@landmark = Landmark.find(params[:id])
 		@figure = Figure.all
-		
+
 		erb :"/landmarks/edit"
 	end
 
