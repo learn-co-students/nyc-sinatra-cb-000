@@ -1,0 +1,32 @@
+<h1>Create a new figure</h1>
+<form method="post" action="/figures">
+  <label for="figure_name">Name</label>
+  <input type="text" id="figure_name" name="figure[name]"><br />
+  <br />
+
+  <p>Landmarks</p>
+  <% @landmarks.each do |landmark| %>
+    <input type="checkbox" id="landmark_<%= landmark.id %>" name="figure[landmark_ids][]" value="<%= landmark.id %>">
+    <%= landmark.name %></br>
+  <% end %>
+
+  <p>Add a new landmark</p>
+  <label for="new_landmark">Name</label>
+  <input type="text" id="new_landmark" name="landmark[name]"></br>
+
+  <label for="landmark_year">Year Completed</label>
+  <input type="number" id="landmark_year" name="landmark[year_completed]"></br>
+
+  <p>Title(s)</p>
+  <% @titles.each do |title| %>
+    <input type="checkbox" id="title_<%= title.id %>" name="figure[title_ids][]" value="<%= title.id %>">
+    <%= title.name %></br>
+  <% end %>
+
+  <p>Create a new title</p>
+  <label for="new_title">Title Name</label>
+  <input type="text" id="new_title" name="title[name]"><br />
+  <br />
+
+  <input type="submit" value="Create New Figure">
+</form>
