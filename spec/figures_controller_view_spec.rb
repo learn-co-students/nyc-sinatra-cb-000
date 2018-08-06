@@ -18,7 +18,7 @@ describe FiguresController do
 
   it "allows you to view form to create a new figure" do
     visit '/figures/new'
-    expect(page.body).to include('<form>')
+    expect(page.body).to include('<form')
     expect(page.body).to include('figure[name]')
     expect(page.body).to include('figure[title_ids][]')
     expect(page.body).to include('figure[landmark_ids][]')
@@ -29,7 +29,7 @@ describe FiguresController do
   it "allows you to create a new figure with a title" do
     visit '/figures/new'
     fill_in :figure_name, :with => "Doctor Who"
-    check "title_#{Title.first.id}"
+    check "#{Title.first.id}"
     click_button "Create New Figure"
     figure = Figure.last
     expect(Figure.all.count).to eq(3)
@@ -40,7 +40,7 @@ describe FiguresController do
   it "allows you to create a new figure with a landmark" do
     visit '/figures/new'
     fill_in :figure_name, :with => "Doctor Who"
-    check "landmark_#{Landmark.first.id}"
+    check "#{Landmark.first.id}"
     click_button "Create New Figure"
     figure = Figure.last
     expect(Figure.all.count).to eq(3)
@@ -95,7 +95,7 @@ describe FiguresController do
     get "/figures/#{@figure.id}/edit"
 
     expect(last_response.status).to eq(200)
-    expect(last_response.body).to include('<form>')
+    expect(last_response.body).to include('<form')
     expect(last_response.body).to include('figure[name]')
     expect(last_response.body).to include('figure[title_ids]')
     expect(last_response.body).to include(@figure.name)
