@@ -18,7 +18,7 @@ describe FiguresController do
 
   it "allows you to view form to create a new figure" do
     visit '/figures/new'
-    expect(page.body).to include('<form')
+    expect(page.body).to include('<form>')
     expect(page.body).to include('figure[name]')
     expect(page.body).to include('figure[title_ids][]')
     expect(page.body).to include('figure[landmark_ids][]')
@@ -95,7 +95,7 @@ describe FiguresController do
     get "/figures/#{@figure.id}/edit"
 
     expect(last_response.status).to eq(200)
-    expect(last_response.body).to include('<form')
+    expect(last_response.body).to include('<form>')
     expect(last_response.body).to include('figure[name]')
     expect(last_response.body).to include('figure[title_ids]')
     expect(last_response.body).to include(@figure.name)

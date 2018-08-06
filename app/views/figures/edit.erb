@@ -1,0 +1,43 @@
+<h1>Edit Figure<h1>
+
+<form>
+<form action="/figures/<%= @figure.id%>" method="POST">
+
+  <label>Name:</label>
+
+  <br/>
+
+  <input type="text" name="figure[name]" id="figure_name">
+
+   <br/>
+
+  <label>Landmarks:</label>
+
+  <br/>
+
+   <% Landmark.all.each do |landmark|%>
+     <input type="checkbox" name="figure[landmark_ids][]" id="<%= landmark.name %>" value="<%= landmark.id %>" <%='checked' if @figure.landmark.name == landmark.name %>><%= landmark.name %></input>
+   <% end %>
+
+   <br/>
+
+   <label>Or, create a new landmark:</label>
+   <input type="text" id="landmark[name]"></input>
+
+   <br/>
+
+   <label>Titles:</label>
+
+   <br/>
+
+    <% Title.all.each do |title|%>
+      <input type="checkbox" name="figure[title_ids][]" id="<%= title.name %>" value="<%= title.id %>" <%='checked' if @figure.title.name == title.name %>><%= title.name %></input>
+    <% end %>
+
+    <br/>
+
+    <label>Or, create a new title:</label>
+    <input type="text" if="title[name]"></input>
+
+   <input type="submit" value="Edit Figure">
+ </form>
