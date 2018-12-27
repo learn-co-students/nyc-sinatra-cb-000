@@ -4,14 +4,48 @@ class FiguresController < ApplicationController
     erb :'figures/index'
   end
 
+  post '/figures' do
+    @figure = Figure.create(name: params[:figure][:name])
+
+    if params[:figure][:title_ids] != nil
+      params[:figure][:title_ids].each do |id|
+        @figure.titles << Title.find(id)
+      end
+    end
+
+    if params[:title][:name] != ""
+      new_title = Title.create(name: params[:title])
+      @figure.titles << new_title
+    end
+
+    if params[:figure][:landmark_ids] != nil
+      params[:figure][:landmark_ids].each do |id|
+        @figure.landmarks << Landmark.find(id)
+      end
+    end
+
+    if params[:landmark][:name] != ""
+      new_landmark = Landmark.create(name: params[:landmark][:name])
+      @figure.landmarks << new_landmark
+    end
+
+
+  end
+
   get '/figures/new' do
+    @titles = Title.all
+    @landmarks = Landmark.all
     erb :'figures/new'
   end
 
   get '/figures/:id' do
-    # binding.pry
     @figure = Figure.find(params[:id])
     erb :'figures/show'
+  end
+
+  get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
+    erb :'figures/edit'
   end
 
 end
