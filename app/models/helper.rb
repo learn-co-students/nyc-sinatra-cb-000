@@ -1,0 +1,20 @@
+module HelperStuff
+
+  def self.included base
+    base.send :include, InstanceMethods
+    base.extend ClassMethods
+  end
+
+  module InstanceMethods
+    def slug
+      self.name.downcase.gsub ' ', '-'
+    end
+  end
+
+  module ClassMethods
+    def find_by_slug(input)
+      self.all.detect {|a| a.slug == input}
+    end
+  end
+
+end
