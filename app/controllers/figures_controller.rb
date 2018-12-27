@@ -5,6 +5,8 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
+
+
     @figure = Figure.create(name: params[:figure][:name])
 
     if params[:figure][:title_ids] != nil
@@ -28,7 +30,12 @@ class FiguresController < ApplicationController
       new_landmark = Landmark.create(name: params[:landmark][:name])
       @figure.landmarks << new_landmark
     end
+
+    redirect "/figures/#{@figure.id}"
+
   end
+
+
 
   get '/figures/new' do
     @titles = Title.all

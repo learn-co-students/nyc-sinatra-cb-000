@@ -3,7 +3,7 @@
 <!-- add content here -->
 <form class="" action="/landmarks" method="post">
   <h2>Name: <input type="text" name="landmark[name]" id="landmark_name" value=""></h2>
-  <h2>Year completed: <input type="text" name="landmark[year_completed]" id="landmark_name" value=""></h2>
+  <h2>Year completed: <input type="text" name="landmark[year_completed]" id="landmark_year_completed" value=""></h2>
 
   <%@figures.each do |f|%>
     <input type="checkbox" name="figure[figure_ids][]" value="<%=f.id%>" id="figure_<%=f.id%>"><%=f.name%></input>
@@ -19,7 +19,7 @@
   <input type="text" name="title[name]" id="new_title" value="">
 
 
-  <input type="submit" id="Create New Figure" name="" value="Create New Figure">
+  <input type="submit" id="Create New Landmark" name="" value="Create New Landmark">
 </form>
 
 

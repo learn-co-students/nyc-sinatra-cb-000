@@ -10,14 +10,18 @@ class LandmarksController < ApplicationController
     erb :'landmarks/new'
   end
 
+  get '/landmarks/:id' do
+    @landmark = Landmark.find(params[:id])
+    erb :'landmarks/show'
+  end
 
   post '/landmarks' do
-    change figure to landmarks
-    # @figure = Figure.create(name: params[:figure][:name])
-    #
-    # if params[:figure][:title_ids] != nil
-    #   params[:figure][:title_ids].each do |id|
-    #     @figure.titles << Title.find(id)
+    # change figure to landmarks
+    @landmark = Landmark.create(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
+
+    # if params[:landscape][:title_ids] != nil
+    #   params[:landscape][:title_ids].each do |id|
+    #     @landscape.titles << Title.find(id)
     #   end
     # end
     #
@@ -36,6 +40,16 @@ class LandmarksController < ApplicationController
     #   new_landmark = Landmark.create(name: params[:landmark][:name])
     #   @figure.landmarks << new_landmark
     # end
+
+    redirect "/landscape/#{@landscape.id}"
+  end
+
+  get '/landmarks/:id/edit' do
+    binding.pry
+    @landmark = Landmark.create(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
+    @figures = Figure.all
+    @titles = Title.all
+    erb :'landmarks/edit'
   end
 
 end
