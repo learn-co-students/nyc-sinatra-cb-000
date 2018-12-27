@@ -28,8 +28,6 @@ class FiguresController < ApplicationController
       new_landmark = Landmark.create(name: params[:landmark][:name])
       @figure.landmarks << new_landmark
     end
-
-
   end
 
   get '/figures/new' do
