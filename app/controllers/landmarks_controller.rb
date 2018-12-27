@@ -16,40 +16,24 @@ class LandmarksController < ApplicationController
   end
 
   post '/landmarks' do
-    # change figure to landmarks
     @landmark = Landmark.create(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
-
-    # if params[:landscape][:title_ids] != nil
-    #   params[:landscape][:title_ids].each do |id|
-    #     @landscape.titles << Title.find(id)
-    #   end
-    # end
-    #
-    # if params[:title][:name] != ""
-    #   new_title = Title.create(name: params[:title])
-    #   @figure.titles << new_title
-    # end
-    #
-    # if params[:figure][:landmark_ids] != nil
-    #   params[:figure][:landmark_ids].each do |id|
-    #     @figure.landmarks << Landmark.find(id)
-    #   end
-    # end
-    #
-    # if params[:landmark][:name] != ""
-    #   new_landmark = Landmark.create(name: params[:landmark][:name])
-    #   @figure.landmarks << new_landmark
-    # end
-
     redirect "/landscape/#{@landscape.id}"
   end
 
   get '/landmarks/:id/edit' do
-    binding.pry
-    @landmark = Landmark.create(name: params[:landmark][:name], year_completed: params[:landmark][:year_completed])
+    @landmark = Landmark.find(params[:id])
     @figures = Figure.all
-    @titles = Title.all
+    # @titles = Title.all
     erb :'landmarks/edit'
+  end
+
+  patch '/landmarks/:id' do
+    # binding.pry
+    @landmark = Landmark.find(params[:id])
+    @landmark.name = params[:landmark][:name]
+    @landmark.year_completed = params[:landmark][:year_completed]
+    @landmark.save
+    erb :"landmarks/show"
   end
 
 end

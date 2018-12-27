@@ -1,4 +1,6 @@
-module HelperStuff
+#!/usr/bin/env ruby
+
+module Helper
 
   def self.included base
     base.send :include, InstanceMethods
