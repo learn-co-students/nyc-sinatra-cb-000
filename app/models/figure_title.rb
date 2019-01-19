@@ -1,3 +1,7 @@
 class FigureTitle < ActiveRecord::Base
-  # add relationships here
+  include Slugifiable
+  extend Slugifiable::Find
+
+  belongs_to :title
+  belongs_to :figure
 end

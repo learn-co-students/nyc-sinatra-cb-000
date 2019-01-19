@@ -1,3 +1,6 @@
 class Landmark < ActiveRecord::Base
-  # add relationships here
+  include Slugifiable
+  extend Slugifiable::Find
+
+  belongs_to :figure
 end

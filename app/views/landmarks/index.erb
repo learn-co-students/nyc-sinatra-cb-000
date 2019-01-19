@@ -1,6 +1,17 @@
 <h2>All Historical Landmarks</h2>
 
-<!-- add content here -->
-
-<a class="button" href="/figures">Figures</a>
+<ul>
+<% @landmarks.reverse.each do |landmark| %>
+  <li>
+    <%= landmark.name %>
+    <a href="/landmarks/<%= landmark.id %>/edit">Edit</a>
+    <ul>
+      <li><%= landmark.year_completed %></li>
+    </ul>
+  </li>
+  <br>
+<% end %>
+</ul>
+<a class="button" href="/landmarks/new">Add Landmarks</a> <br>
+<a class="button" href="/figures">Figures</a> <br>
 <a class="button" href="/">Home</a>
