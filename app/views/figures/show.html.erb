@@ -1,0 +1,16 @@
+<h1> <%= @figure.name %> </h1>
+<ul>
+  <% @figure.landmarks.each do |landmark| %>
+    <li>
+      <%= landmark.name %>
+    </li>
+      <ul>
+        <li><%= landmark.year_completed %></li>
+      </ul>
+  <% end %>
+</ul>
+<form action="/figures/<%= @figure.id %>/edit" method="GET">
+  <input type="submit" value="Edit Figure">
+</form>
+<a class="button" href="/landmarks">Landmarks</a> <br>
+<a class="button" href="/">Home</a>
