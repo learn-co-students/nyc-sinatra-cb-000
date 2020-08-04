@@ -1,5 +1,3 @@
-[![ReadMe Card](https://github.com/AndreaJasper/nyc-sinatra-cb-000.app/api/pin/?username=AndreaJasper&repo=github-readme-stats)](https://github.com/AndreaJasper/nyc-sinatra-cb-000)
-
 # Welcome to NYC Sinatra!
 
 ## Introduction
