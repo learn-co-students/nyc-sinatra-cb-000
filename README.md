@@ -1,3 +1,5 @@
+<img align="left" alt="" src="https://github.com/AndreaJasper/nyc-sinatra-cb-000.vercel.app/api?username=AndreaJasper&theme=buefy&show_icons=true&hide_border=true" />
+
 # Welcome to NYC Sinatra!
 
 ## Introduction
